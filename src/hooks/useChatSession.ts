@@ -6,13 +6,20 @@ const useChatSession = () => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch(`http://localhost:8000/api/session`, { method: "POST" })
-      .then((res) => res.json())
-      .then(({ session_id }) => setSessionId(session_id))
-      .catch((e) => {
+    const fetchSession = async () => {
+      try {
+        const res = await fetch(`http://localhost:8000/api/session`, {
+          method: "POST",
+        });
+        const { session_id } = await res.json();
+        setSessionId(session_id);
+      } catch (e) {
         console.error(e);
         setError("Could not start chat session.");
-      });
+      }
+    };
+
+    fetchSession();
   }, []);
 
   return { sessionId, error };

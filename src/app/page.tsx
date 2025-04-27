@@ -1,27 +1,29 @@
 import { FC } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const Navbar: FC = () => {
   return (
-    <nav className="flex items-center justify-between p-6 bg-[--background] font-['Inter']">
-      <div className="flex items-center gap-4">
+    <nav className="flex justify-center p-6 bg-[--background] font-['Inter']">
+      <div className="flex items-center justify-between w-full max-w-[1280px] ">
+      <div className="flex items-center gap-4 ">
         <div className="flex items-center">
           <Image
-            src="/images/tamma-logo.svg"
+            src="/tamma_hor_logo.svg"
             alt="Tamma Logo"
-            width={36}
-            height={36}
+            width={100}
+            height={60}
           />
-          <span className="ml-2 text-xl font-bold">tamma</span>
         </div>
       </div>
       <div>
-        <button className="px-4 py-2 mr-2 text-[--primary] border border-[--primary] rounded hover:bg-[--primary] hover:text-white transition-colors">
+        <Link href="/signin" className="px-4 py-2 font-medium text-forground rounded hover:opacity-90 transition-opacity">
+          Log in
+        </Link>
+        <Link href="/signup" className="px-4 py-2 mr-2 font-medium text-background rounded bg-primary transition-colors">
           Start Automate
-        </button>
-        <button className="px-4 py-2 text-white bg-[--primary] rounded hover:opacity-90 transition-opacity">
-          Sign Up
-        </button>
+        </Link>
+      </div>
       </div>
     </nav>
   );
@@ -29,26 +31,12 @@ const Navbar: FC = () => {
 
 const Hero: FC = () => {
   return (
-    <div className="flex flex-col items-center justify-center px-6 py-20 text-center font-['Inter']">
-      <h1 className="mb-6 text-5xl font-bold font-['Poppins']">
-        Supercharge Your Workflow with AI
-      </h1>
-      <p className="max-w-2xl mb-10 text-xl text-[--foreground]/70">
-        Experience the power of AI to transform your business processes and
-        boost productivity.
-      </p>
-      <div className="w-full max-w-2xl">
-        <div className="flex">
-          <input
-            type="text"
-            placeholder="Enter your question or prompt..."
-            className="w-full px-6 py-4 text-lg border border-[--secondary] rounded-l-lg focus:outline-none focus:ring-2 focus:ring-[--primary]"
-          />
-          <button className="px-6 py-4 text-lg font-medium text-white bg-[--primary] rounded-r-lg hover:opacity-90 transition-opacity">
-            Submit
-          </button>
-        </div>
-      </div>
+    <div className="flex flex-col items-center justify-center px-6 py-32 text-center font-['Inter']">
+      <h1 className="text-[64px] font-medium max-w-[800px] leading-[1.2] text-foreground font-['Inter_Tight']">Easily deploy your AWS Lambda functions</h1>
+      <p className="text-xl leading-[1.4] font-[Inter_Tight] mt-4 text-">
+        Tamma lets you deploy your serverless functions by talking to an agent, <br/>
+      No more CLI, just let us handle everything. Tell us what we need to do.</p>
+      <Link href="/signin" className="bg-primary text-background p-2 px-4 rounded mt-6">Deploy Lambda -{">"} </Link>
     </div>
   );
 };
