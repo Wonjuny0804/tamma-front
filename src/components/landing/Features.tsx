@@ -1,6 +1,7 @@
 'use client';
 
 import { FC } from 'react';
+import Image from 'next/image';
 
 const Features: FC = () => {
   return (
@@ -42,28 +43,31 @@ const Features: FC = () => {
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         <div className="overflow-hidden rounded-lg bg-white p-2 shadow-lg">
           <div className="h-64 w-full overflow-hidden rounded-lg bg-gray-200">
-            <img
+            <Image
               src="/images/feature-1.jpg"
               alt="Feature 1"
-              className="h-full w-full object-cover"
+              fill
+              className="object-cover"
             />
           </div>
         </div>
         <div className="overflow-hidden rounded-lg bg-white p-2 shadow-lg">
           <div className="h-64 w-full overflow-hidden rounded-lg bg-gray-200">
-            <img
+            <Image
               src="/images/feature-2.jpg"
               alt="Feature 2"
-              className="h-full w-full object-cover"
+              fill
+              className="object-cover"
             />
           </div>
         </div>
         <div className="overflow-hidden rounded-lg bg-white p-2 shadow-lg">
           <div className="h-64 w-full overflow-hidden rounded-lg bg-gray-200">
-            <img
+            <Image
               src="/images/feature-3.jpg"
               alt="Feature 3"
-              className="h-full w-full object-cover"
+              fill
+              className="object-cover"
             />
           </div>
         </div>
