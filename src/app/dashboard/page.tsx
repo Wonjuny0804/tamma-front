@@ -12,6 +12,8 @@ export interface IJob {
   s3_key: string;
   status: string;
   derived_key: string;
+  transcript_key: string;
+  transcript_status: string;
 }
 
 export default function Dashboard() {
@@ -75,7 +77,15 @@ export default function Dashboard() {
             <tr key={j.id}>
               <td>{j.file_name}</td>
               <td>{j.status}</td>
-              <td>{j.status === 'done' && <DownloadLink derivedKey={j.derived_key} />}</td>
+              <td>
+                {j.file_type === 'audio' ? (
+                  j.status === 'done' ? (
+                    <DownloadLink derivedKey={j.derived_key} />
+                  ) : null
+                ) : j.transcript_status === 'done' ? (
+                  <DownloadLink derivedKey={j.transcript_key} />
+                ) : null}
+              </td>
             </tr>
           ))}
         </tbody>

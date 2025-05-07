@@ -9,6 +9,7 @@ const BUCKET = 'tamma-dev-raw';
 export async function POST(req: Request) {
   const { fileName, type } = await req.json();
   const fileType = type.startsWith('audio/') ? 'audio' : 'video';
+  console.log(type);
   const supabase = await createClient();
 
   // 1. create DB row (status=pending)
@@ -27,7 +28,7 @@ export async function POST(req: Request) {
     .single();
 
   // 2. presign S3 put
-  const cmd = new PutObjectCommand({ Bucket: BUCKET, Key: job.s3_key, ContentType: fileType });
+  const cmd = new PutObjectCommand({ Bucket: BUCKET, Key: job.s3_key, ContentType: type });
   const url = await getSignedUrl(client, cmd, { expiresIn: 3600 });
 
   return NextResponse.json({ url, job });
