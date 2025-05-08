@@ -2,14 +2,14 @@ import React, { useCallback, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { IJob } from '@/app/dashboard/page';
+import { Job } from '@/types';
 
 interface Props {
   /**
    * Optional callback that runs after the upload + DB insert succeed.
    * Receives the `job` row returned by the API route.
    */
-  onUploadComplete?: (job: IJob) => Promise<void>;
+  onUploadComplete?: (job: Job) => Promise<void>;
 }
 
 export default function FileDropzone({ onUploadComplete }: Props) {
