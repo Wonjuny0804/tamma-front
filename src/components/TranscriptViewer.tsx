@@ -22,7 +22,9 @@ export default function TranscriptViewer({ transcriptKey }: { transcriptKey: str
   useEffect(() => {
     async function fetchTranscript() {
       try {
-        const res1 = await fetch(`/api/download-url?key=${encodeURIComponent(transcriptKey)}`);
+        const res1 = await fetch(
+          `/api/download-url?bucket=derived&key=${encodeURIComponent(transcriptKey)}`
+        );
         const { url, error: preErr } = await res1.json();
         if (preErr) throw new Error(preErr);
 

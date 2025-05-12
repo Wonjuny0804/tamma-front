@@ -11,7 +11,6 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ id: 
   try {
     const supabase = await createClient();
     const { data: job } = await supabase.from('jobs').select('*').eq('id', id).single();
-    console.log(job);
     return NextResponse.json({ job });
   } catch (err) {
     console.error('Presign error', err);

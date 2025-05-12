@@ -11,7 +11,9 @@ const DownloadLink: FC<Props> = ({ derivedKey }) => {
   const [url, setUrl] = useState<string | null>(null);
 
   const fetchUrl = async () => {
-    const res = await fetch(`/api/download-url?key=${encodeURIComponent(derivedKey)}`);
+    const res = await fetch(
+      `/api/download-url?bucket=derived&key=${encodeURIComponent(derivedKey)}`
+    );
     const { url: presignedUrl } = await res.json();
     setUrl(presignedUrl);
   };
